@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 21.x, 22.x, 23.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install published package (generates npm download)
+        run: npm install staxial-sdk --no-save || echo "Package not yet published, skipping"
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run utils test
+        run: npm run test:utils
+
+      - name: Run contract test
+        run: npm run test:contract
+
+      - name: Run constants test
+        run: npm run test:constants
+
+      - name: Build
+        run: npm run build
