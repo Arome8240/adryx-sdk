@@ -32,7 +32,8 @@
     "blockchain",
     "sdk",
     "health",
-    "erc20"
+    "erc20",
+    "stacks"
   ],
   "author": "Dev Arome",
   "license": "MIT",
