@@ -1,6 +1,6 @@
 {
   "name": "adryx-sdk",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "TypeScript SDK for interacting with Celo Health contracts",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -34,12 +34,22 @@
     "health",
     "erc20"
   ],
-  "author": "Celo Health",
+  "author": "Dev Arome",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Arome8240/celo-health-sdk"
+    "url": "https://github.com/Arome8240/adryx-sdk"
   },
+   "bugs": {
+    "url": "https://github.com/Arome8240/adryx-sdk/issues"
+  },
+  "homepage": "https://github.com/Arome8240/adryx-sdk#readme",
   "dependencies": {
     "viem": "^2.38.5"
   },
